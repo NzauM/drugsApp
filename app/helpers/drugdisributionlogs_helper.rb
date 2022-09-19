@@ -1,0 +1,2 @@
+module DrugdisributionlogsHelper
+end

@@ -1,0 +1,83 @@
+<%
+=begin%>
+ <h1>Ndio hizi All Drugs</h1> 
+<%
+=end%>
+
+<div class="row">
+<div class="card">
+  <div class="card-body">
+    <div class="card-title">
+    <div class="alert alert-primary" role="alert">
+<p class="display-6 text-center">List of all Drugs</p>
+    
+</div>
+    </div>
+    <div class="row">
+    <div class="col-md-10"></div>
+    <div class="col-md-2">
+    <a href="/drugs/newdrug" class="btn btn-primary">Add Drug</a>
+    </div>  
+    
+    </div>
+    <hr>
+    
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Drug Unit</th>
+      <th scope="col">Initial Stock</th>
+      <th scope="col">Last Purchased</th>
+      <th scope="col">Last Distributed</th>      
+      <th scope="col">Available Stock</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+
+<% @drugs.each do |drug| %>
+
+
+    <tr>
+      <td><%= drug.name%></td>
+      <td><%= drug.drugunit.name%></td>
+      <td><%= drug.initial_stock%></td>
+      <% if drug.drugpurchaselogs.last().nil?%>
+      <td>Not yet stocked</td>
+      <%else%>
+      <td>
+      <%= drug.drugpurchaselogs.last().created_at%>
+      </td>
+      <%end%>
+       <% if drug.drugdistributionlogs.last().nil?%>
+      <td>Not yet distributed</td>
+      <%else%>
+      <td>
+      <%= drug.drugdistributionlogs.last().created_at%>
+      </td>
+      <%end%>
+     
+ <% if drug.current_stock > 0%>
+ <td>
+      <button class="btn btn-primary">In Stock <span class="badge badge-primary"><%= drug.current_stock%></span></button>
+      </td>
+      <%else%>
+      <td>
+      <button class="btn btn-danger">Not in Stock</button>
+      </td>
+      <%end%> 
+      <td>
+      <a href="/drugs/<%= drug.id%>" class="btn btn-info">View<span> <i class="pl-5 fa-solid fa-magnifying-glass "></i> </span></a>
+      <td>
+    </tr>
+
+<%end%>
+</tbody>
+</table>
+  </div>
+</div>
+</div>
+
+
+

@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  order_no: MyString
+  order_date: MyString
+  drug_id: 1
+  supplier_id: 1
+  price: 1
+
+two:
+  order_no: MyString
+  order_date: MyString
+  drug_id: 1
+  supplier_id: 1
+  price: 1

@@ -1,0 +1,111 @@
+<div class="jumbotron">
+    <%
+=begin%>
+ <h1 class="display-3">Jumbo heading</h1> 
+<%
+=end%>
+    <div class="alert alert-primary" role="alert">
+<p class="display-6 text-center">See <%= @drug.name%>'s full details</p>
+    
+</div>
+</div>
+
+<div class="container">
+
+<div class="card text-center">
+  <div class="card-header">
+    <p>Drug Name: <%= @drug.name%></p>
+  </div>
+  <div class="card-body">
+    
+    <div class="card-text">
+    <div class="row">
+    <div class="col-4">
+    
+    .<div class="card">
+     <h5 class="card-title">
+     <%= @drug.name%>'s Details
+    </h5>
+    <hr>
+                <p>Drug Unit: <%= @drug.drugunit.name%></p>
+    <p>Remaining Units: <%=@drug.current_stock%></p>
+           
+    </div>
+    
+    
+     
+    </div> 
+    <div class="col-8">
+     
+     <div class="card">
+     <h5 class="card-title"><%= @drug.name%>'s Logs</h5>
+     <hr>
+     <div class="table-responsive">
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Drug Name</th>
+      <th scope="col">Current Stock</th>
+      <th scope="col">Action</th>
+      <th scope="col">Affected Units</th>
+      <th scope="col">Remaining Units</th>
+      <th scope="col">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+  <%@drug_logs.each do |log|%>
+    <tr>
+      <th><%= log.drug.name%></th>
+      <td><%= log.former_stock%></td>
+      <td >
+      <a href="#" class="btn btn-outline-primary disabled" role="button">
+      <%= log.drug_action%>
+      </a>
+      
+      </td>
+      <% if log.drug_action == "purchase"%>
+      <td>
+      <button class="btn btn-success">
+      <%= log.drugpurchaselog.purchased_units%> <span class="badge badge-success">Purchased</span>
+      </button>
+      </td>
+      <td><%= log.former_stock + log.drugpurchaselog.purchased_units%></td>
+      <%elsif log.drug_action == "distribution"%>
+      <td>
+       <button class="btn btn-danger">
+      <%= log.drugdistributionlog.removed_units%> <span class="badge badge-danger">Sent to <%= log.drugdistributionlog.department.name%></span> 
+      </button>
+      </td>
+      <td><%= log.drugdistributionlog.remaining_units%></td> 
+      <%else %>
+      <td>
+      <button class="btn btn-info">
+      <%= log.drug.current_stock%> <span class="badge badge-info">Initial</span> 
+      </button>
+      </td>
+      <td><%= log.drug.current_stock%></td>
+      <%end%>
+      <td><%=log.created_at.strftime("%b/%d/%Y %H:%M")%></td>
+
+    </tr>
+    <%end%>
+    </tbody>
+    </table>  
+    </div> 
+    </div>
+    </div>
+    </div>
+    </div>
+    
+  </div>
+  <div class="card-footer ">
+  <% if @drug.current_stock <= 0%>
+  <div class="alert alert-danger" role="alert">
+    <p>This drug is out of stock!!</p>
+  </div>
+ <%else%>
+   <a href="/drugdistributionlogs/distribute/<%= @drug.id%>" class="btn btn-info">Distribute Drug</a>
+   <%end%>
+  </div>
+</div>
+</div>

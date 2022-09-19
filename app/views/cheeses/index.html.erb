@@ -1,0 +1,28 @@
+<h1>Here are our Cheeses</h1>
+
+
+ <div class="row"> 
+
+<%@cheeses.each do |cheese|%>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">
+        <%= cheese.name%>
+        </h5>
+        <p class="card-text">
+        <%= cheese.name%>
+        This is one of the best cheeses i've seen. Tastes and looks great.
+        </p>
+        <a href="#" class="btn btn-info ">
+        Price: 
+        <%= cheese.price%>
+        </a>
+        <a href="/cheeses/<%= cheese.id%>" class="btn btn-primary">See details</a>
+      </div>
+    </div>
+  </div>
+ <%end%>
+ </div> 
+
+

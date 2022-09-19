@@ -1,0 +1,3 @@
+class DrugtracklogsController < ApplicationController
+    
+end
