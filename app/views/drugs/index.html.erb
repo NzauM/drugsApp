@@ -4,19 +4,17 @@
 <%
 =end%>
 
-<div class="row">
-<div class="card">
+<div class="row mt-5" style="height: 90vh">
+<div class="card mt-3">
   <div class="card-body">
     <div class="card-title">
-    <div class="alert alert-primary" role="alert">
-<p class="display-6 text-center">List of all Drugs</p>
+<p class="display-6 text-center"> List of all Drugs</p>
     
-</div>
     </div>
     <div class="row">
     <div class="col-md-10"></div>
     <div class="col-md-2">
-    <a href="/drugs/newdrug" class="btn btn-primary">Add Drug</a>
+    <a href="/drugs/newdrug" class="btn btn-outline-info">Add Drug</a>
     </div>  
     
     </div>
@@ -60,15 +58,15 @@
      
  <% if drug.current_stock > 0%>
  <td>
-      <button class="btn btn-primary">In Stock <span class="badge badge-primary"><%= drug.current_stock%></span></button>
+      <button class="btn btn-info text-white">In Stock <span class=""><%= drug.current_stock%></span></button>
       </td>
       <%else%>
       <td>
-      <button class="btn btn-danger">Not in Stock</button>
+      <button class="btn btn-outline-danger">Not in Stock</button>
       </td>
       <%end%> 
       <td>
-      <a href="/drugs/<%= drug.id%>" class="btn btn-info">View<span> <i class="pl-5 fa-solid fa-magnifying-glass "></i> </span></a>
+      <a href="/drugs/<%= drug.id%>" class="btn btn-outline-info">View<span> <i class="pl-5 fa-solid fa-magnifying-glass "></i> </span></a>
       <td>
     </tr>
 
