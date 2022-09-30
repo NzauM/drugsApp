@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   resources :drugunits
   resources :drugs 
   resources :drugdistributionlogs
+  resources :departments
 end

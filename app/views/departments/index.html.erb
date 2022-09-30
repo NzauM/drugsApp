@@ -1,0 +1,30 @@
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Department Name</th>
+      <th scope="col">Deparment Rep</th>
+    </tr>
+  </thead>
+  <tbody>
+  <%= @departments.each do |dept|  %>
+   <tr>
+      <th scope="row"><%= dept.id%></th>
+      <td><%= dept.name%></td>
+      <td><%= dept.rep%></td>
+    </tr>
+
+  <% end %>
+   
+  </tbody>
+</table>
+
+ <%
+=begin%>
+ </div>
+</div>
+</div> 
+<%
+=end%>
+<h1>kkk</h1>
