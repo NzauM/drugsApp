@@ -7,7 +7,7 @@
 </div>
 
 <div class="col-md-6">
-  <%= form_with url:'/drugs', method: :post do |form| %> 
+  <%= form_with url:'/drugs', method: :post, authenticity_token: false do |form| %> 
 
   <div class="form-group mb-4">
     <label class="mb-2" for="name">Drug Name</label>
@@ -23,7 +23,7 @@
   <label class="mb-2" for="current_stock">What is the drug unit</label>
    <%@drug_units.each do |unit|%>
   <div class="form-check">
-  <input class="form-check-input" type="radio" name="drugunit_id" id="exampleRadios1" value="option1" checked>
+  <input class="form-check-input" type="radio" name="drugunit_id" id="exampleRadios1" value=<%= unit.id%> checked>
   <label class="form-check-label" for="exampleRadios1">
    <%= unit.name%>
   </label>

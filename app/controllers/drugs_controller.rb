@@ -1,5 +1,5 @@
 class DrugsController < ApplicationController
-    # validates :current_stock, comparison: { greater_than: :end_date }
+    protect_from_forgery with: :null_session
 
     def index 
         @drugs = Drug.includes(:drugpurchaselogs)
@@ -7,7 +7,7 @@ class DrugsController < ApplicationController
         # my_drugs = my_drugs.to_json(include: [:drugunit, :drugdistributionlogs, :drugpurchaselogs, :drugtracklogs])
         # @drug_purchases = my_drugs.drugpurchaselogs
         # @drugs = Drug.all
-        # render json: my_drugs
+        # render json: @drugs
     end
 
     def show
@@ -17,13 +17,16 @@ class DrugsController < ApplicationController
     end
 
     def create 
-        drugparams[:in_stock] = 1
-        drugparams[:initial_stock] = drugparams[:current_stock]
-        drugparams[:in_stock] = 0 unless drugparams[:current_stock].to_i > 0
-        puts drugparams
+        puts "Umefika"
+        newhash = drugparams
+        newhash[:in_stock] = 1
+        newhash[:initial_stock] = newhash[:current_stock]
+        # drugparams[:in_stock] = 0 unless drugparams[:current_stock].to_i > 0
+        puts newhash
         # unless drugparams[:current_stock] > 0 drugparams[:in_stock] = 0 else drugparams[:in_stock] = 1 end
-        new_drug = Drug.create(drugparams)
-        new_drug.drugtracklogs.create(drug_action: "Initial")
+        new_drug = Drug.create!(newhash) 
+        create_log(new_drug)
+        
         # log.save
 
         # drugtrackparams[:drug_action] = "Initial"
@@ -52,6 +55,10 @@ class DrugsController < ApplicationController
         redirect_to action: "index"
         # redirect_to action: "show", id: new_drug.id
         
+    end
+
+    def create_log(new_drug)
+        new_drug.drugtracklogs.create!(drug_action: "Initial", former_stock: new_drug.current_stock)
     end
 
     def newdrug
