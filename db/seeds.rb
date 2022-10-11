@@ -11,23 +11,23 @@
 # Cheese.create!(name: 'Limburger', price: 8, is_best_seller: false)
 
 
-Itemunit.create(name: 'Boxes', itemunitcode: 01)
-Itemunit.create(name: 'Bottles', itemunitcode: 02)
-Itemunit.create(name: 'Rolls', itemunitcode: 03)
-Itemunit.create(name: 'Tablets', itemunitcode:04)
-Itemunit.create(name: 'Packets', itemunitcode: 05)
-Itemunit.create(name: 'Pieces', itemunitcode: 06)
-Itemunit.create(name: 'Tubes', itemunitcode: 07)
+Drugunit.create(name: 'Boxes', drugunitcode: 01)
+Drugunit.create(name: 'Bottles', drugunitcode: 02)
+Drugunit.create(name: 'Rolls', drugunitcode: 03)
+Drugunit.create(name: 'Tablets', drugunitcode:04)
+Drugunit.create(name: 'Packets', drugunitcode: 05)
+Drugunit.create(name: 'Pieces', drugunitcode: 06)
+Drugunit.create(name: 'Tubes', drugunitcode: 07)
+Drugunit.create(name: 'Pieces', drugunitcode: 07)
 
 
+Drug.create!(name: 'Piriton',drugunit_id: 1, current_stock: 20, in_stock: 1, initial_stock: 20)
+Drug.create!(name: 'Panadol',drugunit_id: 3, current_stock: 50, in_stock: 1, initial_stock: 50)
+Drug.create!(name: 'Eno',drugunit_id: 3, current_stock: 40, in_stock: 1,initial_stock: 40)
 
-Item.create!(name: 'Piriton'unit_id: 1, current_stock: 20, in_stock: 1, initial_stock: 20)
-Item.create!(name: 'Panadol'unit_id: 3, current_stock: 50, in_stock: 1, initial_stock: 50)
-Item.create!(name: 'Eno'unit_id: 3, current_stock: 40, in_stock: 1,initial_stock: 40)
-
-Itempurchaselog.create!(order_no: 'DN:304', order_date: '2022,9,17'_id: 1, supplier_id: 1, purchased_units: 20, price_per_unit: 10,  total_price: 200)
-Itempurchaselog.create!(order_no: 'DNZ720', order_date: '2022,9,17'_id: 2, supplier_id: 1, purchased_units: 10, price_per_unit: 50,  total_price: 500)
-Itempurchaselog.create!(order_no: 'DNZ725', order_date: '2022,9,17'_id: 3, supplier_id: 1, purchased_units: 20, price_per_unit: 20,  total_price: 400)
+#Drugpurchaselog.create!(order_no: 'DN:304', order_date: '2022,9,17',drug_id: 1, supplier_id: 1, purchased_units: 20, price_per_unit: 10,  total_price: 200)
+#Drugpurchaselog.create!(order_no: 'DNZ720', order_date: '2022,9,17',drug_id: 2, supplier_id: 1, purchased_units: 10, price_per_unit: 50,  total_price: 500)
+#Drugpurchaselog.create!(order_no: 'DNZ725', order_date: '2022,9,17',drug_id: 3, supplier_id: 1, purchased_units: 20, price_per_unit: 20,  total_price: 400)
 
 # Itemdistributionlog.create(drug_id: 1, )
 

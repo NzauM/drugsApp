@@ -43,7 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_17_142046) do
     t.integer "supplier_id"
     t.integer "purchased_units"
     t.integer "price_per_unit"
-    t.integer "total_price"
+    t.integer "c"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
