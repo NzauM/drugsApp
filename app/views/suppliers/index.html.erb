@@ -1,0 +1,43 @@
+<div style="height:15vh"></div>
+<div class="container" style="height: 70vh">
+<legend><center><h2><b>Add a New Supplier</b></h2></center></legend><br>
+<div class="row">
+<div class="col-md-6">
+   <%= image_tag("pic2.jpg", :alt => "rss feed", class:"img_fluid") %> 
+</div>
+
+<div class="col-md-6">
+  <%= form_with url:'/suppliers', method: :post, authenticity_token: false do |form| %> 
+
+  <div class="form-group mb-4">
+    <label class="mb-2" for="supplier_ref">Supplier Ref</label>
+    <input name="supplier_ref" type="text" class="form-control" placeholder="Supplier Ref">
+  </div>
+
+  <div class="form-group mb-4">
+    <label class="mb-2" for="supplier_name">Supplier Name </label>
+    <input name="supplier_name" type="text" class="form-control" placeholder="Supplier Name">
+  </div>
+
+  <div class="form-group mb-4">
+    <label class="mb-2" for="contact">Supplier Contact </label>
+    <input name="contact" type="text" class="form-control" placeholder="Supplier Contact">
+  </div>
+  
+ <div class="form-group mb-4">
+    <label class="mb-2" for="paybill_number">Supplier Paybill Number </label>
+    <input name="paybill_number" type="text" class="form-control" placeholder="Supplier Paybill Number">
+  </div>
+
+  
+  
+  <button type="submit" class="btn btn-outline-primary">Submit</button>
+<%end%>
+</div>
+
+</div>
+  
+</div>
+
+
+

@@ -53,7 +53,7 @@
       </a>
       
       </td>
-      <% if log.drug_action == "purchase"%>
+      <% if log.drug_action == "purchase" && log.drugpurchaselog_id != nil %>
       <td>
       <button class="btn btn-success">
       <%= log.drugpurchaselog.purchased_units%> <span class="badge badge-success">Purchased</span>

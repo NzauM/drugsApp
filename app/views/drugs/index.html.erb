@@ -26,7 +26,7 @@
       <th scope="col">Name</th>
       <th scope="col">Drug Unit</th>
       <th scope="col">Initial Stock</th>
-      <th scope="col">Last Purchased</th>
+      <th scope="col">Last Stocked</th>
       <th scope="col">Last Distributed</th>      
       <th scope="col">Available Stock</th>
       <th scope="col">Action</th>
@@ -42,10 +42,10 @@
       <td><%= drug.drugunit.name%></td>
       <td><%= drug.initial_stock%></td>
       <% if drug.drugpurchaselogs.last().nil?%>
-      <td>Not yet stocked</td>
+      <td> <%= drug.created_at%> (Initial)</td>
       <%else%>
       <td>
-      <%= drug.drugpurchaselogs.last().created_at%>
+      <%= drug.drugpurchaselogs.last().created_at%> (Purchase)
       </td>
       <%end%>
        <% if drug.drugdistributionlogs.last().nil?%>
