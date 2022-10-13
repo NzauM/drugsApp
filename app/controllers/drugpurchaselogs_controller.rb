@@ -23,7 +23,8 @@ class DrugpurchaselogsController < ApplicationController
     end
 
     def show
-        @log = Drugpurchaselog.find(params[:id])
+        @drug = Drug.find(params[:id])
+        @logs = Drugpurchaselog.where("drug_id = '#{params[:id]}'")
     end
 
 
