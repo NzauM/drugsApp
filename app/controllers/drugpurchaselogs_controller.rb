@@ -22,6 +22,10 @@ class DrugpurchaselogsController < ApplicationController
         redirect_to "/drugs/show/#{all_props[:drug_id]}"
     end
 
+    def show
+        @log = Drugpurchaselog.find(params[:id])
+    end
+
 
 
     private

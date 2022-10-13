@@ -55,8 +55,10 @@
       </td>
       <% if log.drug_action == "purchase" && log.drugpurchaselog_id != nil %>
       <td>
-      <button class="btn btn-success">
+      <button class="btn btn-success text-white" >
+      <a class="text-white" href="/drugpurchaselogs/<%= log.drugpurchaselog.id%>">
       <%= log.drugpurchaselog.purchased_units%> <span class="badge badge-success">Purchased</span>
+      </a>
       </button>
       </td>
       <td><%= log.former_stock + log.drugpurchaselog.purchased_units%></td>
