@@ -21,14 +21,7 @@
 
   <div class="form-group mb-4">
   <label class="mb-2" for="current_stock">What is the drug unit</label>
-   <%@drug_units.each do |unit|%>
-  <div class="form-check">
-  <input class="form-check-input" type="radio" name="drugunit_id" id="exampleRadios1" value=<%= unit.id%> checked>
-  <label class="form-check-label" for="exampleRadios1">
-   <%= unit.name%>
-  </label>
-  </div>
-  <%end%>
+  <%=select_tag 'drugunit_id', options_for_select(@drug_units.collect{ |u| [u.name, u.id] }) %>
   </div>  
   
   <button type="submit" class="btn btn-outline-primary">Submit</button>
