@@ -8,11 +8,20 @@
 <div class="card mt-3">
   <div class="card-body">
     <div class="card-title">
-<p class="display-6 text-center"> List of all Drugs</p>
+<p class="display-6 text-center"> List of all Drugs </p>
     
     </div>
     <div class="row">
-    <div class="col-md-10"></div>
+    <div class="col-md-7"></div>
+    <div class="col-md-3">
+
+    <form class="form-inline ">
+        <div class="input-group mb-3">
+        <input class="form-control mr-sm-2" type="search" id="searchDrug" placeholder="Search" aria-label="Search">
+    </div>    
+    </form>
+
+    </div>
     <div class="col-md-2">
     <a href="drugpurchaselogs/newsupply" class="btn btn-outline-info">Update Stock</a>
     </div>  
@@ -20,7 +29,7 @@
     </div>
     <hr>
     
-    <table class="table">
+    <table id="drugsTable" class="table">
   <thead>
     <tr>
       <th scope="col">Name</th>
@@ -76,6 +85,17 @@
   </div>
 </div>
 </div>
+
+<script>
+$(document).ready(function(){
+  $("#searchDrug").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#drugsTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
 
 
 

@@ -2,6 +2,8 @@ class DrugsController < ApplicationController
     protect_from_forgery with: :null_session
 
     def index 
+        # Drug.find(42).destroy
+        # puts "DEStroyyyyeeeddd"
         @drugs = Drug.includes(:drugpurchaselogs)
         # my_drugs = Drug.all
         # my_drugs = my_drugs.to_json(include: [:drugunit, :drugdistributionlogs, :drugpurchaselogs, :drugtracklogs])
