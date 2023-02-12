@@ -1,0 +1,49 @@
+
+
+<h1>Heeeyyyyyy</h1>
+ <h1>KAribu kwalog number </h1>
+
+
+ <div class="row">
+  <div class="col-md-2">
+   </div>
+   <div class="col-md-8">
+     <div class="card">
+       <div class="card-body">
+         <h3 class="card-title">
+            <%=@drug.name%> Purchase Logs 
+
+         </h3>
+         <hr>
+         <table class="table">
+            <thead>
+                <tr>
+                    <th>Order No</th>
+                    <th>Order Date</th>
+                    <th>Drug Name</th>
+                    <th>Supplier Name</th>
+                    <th>Units Bought</th>
+                    <th>Price Per Unit</th>
+                    <th>Total Price</th>
+                </tr>
+            </thead>
+            <tbody>
+            <% @logs.each do |log| %>            
+                <tr>
+                    <td><%=log.order_no%></td>
+                    <td><%=log.order_date%></td>
+                    <td><%=log.drug.name%></td>
+                    <td><%=log.supplier.supplier_name%></td>
+                    <td><%=log.purchased_units%></td>
+                    <td><%=log.price_per_unit%></td>
+                    <td><%=log.price_per_unit * log.purchased_units%> </td>
+                </tr>
+                <%end%>
+            </tbody>
+         </table>
+       </div>
+     </div>
+   </div>
+   <div class="col-md-2">
+   </div>
+ </div>

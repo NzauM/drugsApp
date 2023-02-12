@@ -4,31 +4,38 @@
 <%
 =end%>
 
-<div class="row">
-<div class="card">
+<div class="row mt-5" style="height: 90vh">
+<div class="card mt-3">
   <div class="card-body">
     <div class="card-title">
-    <div class="alert alert-primary" role="alert">
-<p class="display-6 text-center">List of all Drugs</p>
+<p class="display-6 text-center"> List of all Drugs </p>
     
-</div>
     </div>
     <div class="row">
-    <div class="col-md-10"></div>
+    <div class="col-md-7"></div>
+    <div class="col-md-3">
+
+    <form class="form-inline ">
+        <div class="input-group mb-3">
+        <input class="form-control mr-sm-2" type="search" id="searchDrug" placeholder="Search" aria-label="Search">
+    </div>    
+    </form>
+
+    </div>
     <div class="col-md-2">
-    <a href="/drugs/newdrug" class="btn btn-primary">Add Drug</a>
+    <a href="drugpurchaselogs/newsupply" class="btn btn-outline-info">Update Stock</a>
     </div>  
     
     </div>
     <hr>
     
-    <table class="table">
+    <table id="drugsTable" class="table">
   <thead>
     <tr>
       <th scope="col">Name</th>
       <th scope="col">Drug Unit</th>
       <th scope="col">Initial Stock</th>
-      <th scope="col">Last Purchased</th>
+      <th scope="col">Last Stocked</th>
       <th scope="col">Last Distributed</th>      
       <th scope="col">Available Stock</th>
       <th scope="col">Action</th>
@@ -44,10 +51,10 @@
       <td><%= drug.drugunit.name%></td>
       <td><%= drug.initial_stock%></td>
       <% if drug.drugpurchaselogs.last().nil?%>
-      <td>Not yet stocked</td>
+      <td> <%= drug.created_at%> (Initial)</td>
       <%else%>
       <td>
-      <%= drug.drugpurchaselogs.last().created_at%>
+      <%= drug.drugpurchaselogs.last().created_at%> (Purchase)
       </td>
       <%end%>
        <% if drug.drugdistributionlogs.last().nil?%>
@@ -60,15 +67,15 @@
      
  <% if drug.current_stock > 0%>
  <td>
-      <button class="btn btn-primary">In Stock <span class="badge badge-primary"><%= drug.current_stock%></span></button>
+      <button class="btn btn-info text-white">In Stock <span class=""><%= drug.current_stock%></span></button>
       </td>
       <%else%>
       <td>
-      <button class="btn btn-danger">Not in Stock</button>
+      <button class="btn btn-outline-danger">Not in Stock</button>
       </td>
       <%end%> 
       <td>
-      <a href="/drugs/<%= drug.id%>" class="btn btn-info">View<span> <i class="pl-5 fa-solid fa-magnifying-glass "></i> </span></a>
+      <a href="/drugs/<%= drug.id%>" class="btn btn-outline-info">View<span> <i class="pl-5 fa-solid fa-magnifying-glass "></i> </span></a>
       <td>
     </tr>
 
@@ -78,6 +85,17 @@
   </div>
 </div>
 </div>
+
+<script>
+$(document).ready(function(){
+  $("#searchDrug").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#drugsTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
 
 
 

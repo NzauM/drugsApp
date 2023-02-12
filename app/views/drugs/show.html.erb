@@ -1,16 +1,6 @@
-<div class="jumbotron">
-    <%
-=begin%>
- <h1 class="display-3">Jumbo heading</h1> 
-<%
-=end%>
-    <div class="alert alert-primary" role="alert">
-<p class="display-6 text-center">See <%= @drug.name%>'s full details</p>
-    
-</div>
-</div>
 
-<div class="container">
+<div style="height: 6vh"></div>
+<div class="container mt-5">
 
 <div class="card text-center">
   <div class="card-header">
@@ -63,10 +53,12 @@
       </a>
       
       </td>
-      <% if log.drug_action == "purchase"%>
+      <% if log.drug_action == "purchase" && log.drugpurchaselog_id != nil %>
       <td>
-      <button class="btn btn-success">
+      <button class="btn btn-success text-white" >
+      <a class="text-white" href="/drugpurchaselogs/<%= log.drug.id%>">
       <%= log.drugpurchaselog.purchased_units%> <span class="badge badge-success">Purchased</span>
+      </a>
       </button>
       </td>
       <td><%= log.former_stock + log.drugpurchaselog.purchased_units%></td>
@@ -80,10 +72,10 @@
       <%else %>
       <td>
       <button class="btn btn-info">
-      <%= log.drug.current_stock%> <span class="badge badge-info">Initial</span> 
+      <%= log.former_stock%> <span class="badge badge-info">Initial</span> 
       </button>
       </td>
-      <td><%= log.drug.current_stock%></td>
+      <td><%= log.former_stock%></td>
       <%end%>
       <td><%=log.created_at.strftime("%b/%d/%Y %H:%M")%></td>
 
