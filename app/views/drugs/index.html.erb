@@ -51,17 +51,17 @@
       <td><%= drug.drugunit.name%></td>
       <td><%= drug.initial_stock%></td>
       <% if drug.drugpurchaselogs.last().nil?%>
-      <td> <%= drug.created_at%> (Initial)</td>
+      <td> <%= drug.created_at.to_fs(:long)%> (Initial)</td>
       <%else%>
       <td>
-      <%= drug.drugpurchaselogs.last().created_at%> (Purchase)
+      <%= drug.drugpurchaselogs.last().created_at.to_fs(:long)%> (Purchase)
       </td>
       <%end%>
        <% if drug.drugdistributionlogs.last().nil?%>
       <td>Not yet distributed</td>
       <%else%>
       <td>
-      <%= drug.drugdistributionlogs.last().created_at%>
+      <%= drug.drugdistributionlogs.last().created_at.to_fs(:long)%>
       </td>
       <%end%>
      

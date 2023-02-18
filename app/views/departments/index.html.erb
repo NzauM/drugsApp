@@ -1,21 +1,32 @@
-
-<table class="table">
+<div class="row" >
+<div class="card">
+  <div class="card-body">
+    <%# <div class="card-title">
+    <p>List of All Departments and Department Heads</p>
+    </div> %>
+    <div class="card-body">
+      <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
+      <th scope="col"></th>
       <th scope="col">Department Name</th>
       <th scope="col">Department Rep</th>
     </tr>
   </thead>
   <tbody>
-  <% @departments.each do |dept|  %>
+  <% @departments.each do |dept| %>
    <tr>
-      <th scope="row"><%= dept.id%></th>
-      <td><%= dept.name%></td>
-      <td><%= dept.rep%></td>
+      <th scope="row"><%= dept.id %></th>
+      <td><%= dept.name %></td>
+      <td><%= dept.rep %></td>
     </tr>
 
   <% end %>
    
   </tbody>
 </table>
+    </div>
+  </div>
+</div>
+</div>
+

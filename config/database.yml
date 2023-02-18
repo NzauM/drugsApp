@@ -9,6 +9,11 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
+
+production:
+  <<: *default
+  database: db/production.psql
+
 development:
   <<: *default
   database: db/development.sqlite3
@@ -20,6 +25,4 @@ test:
   <<: *default
   database: db/test.sqlite3
 
-production:
-  <<: *default
-  database: db/production.sqlite3
+
