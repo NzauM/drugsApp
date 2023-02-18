@@ -1,0 +1,1 @@
+web: RAILS_ENV=production rake db:{create,migrate,seed} && RAILS_ENV=production rails assets:precompile && RAILS_ENV=production rails s

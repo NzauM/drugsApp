@@ -11,6 +11,8 @@ module DrugsApp
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
+   
+
     # config.time_zone = "Nairobi" => "Africa/Nairobi"
     
 
@@ -22,6 +24,7 @@ module DrugsApp
     # in config/environments, which are processed later.
     #
     config.time_zone = "Nairobi"
+    config.secret_key_base = 'blipblapblup'
     # config.environment = "production"
     # config.eager_load_paths << Rails.root.join("extras")
   end
