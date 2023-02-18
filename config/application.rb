@@ -22,6 +22,7 @@ module DrugsApp
     # in config/environments, which are processed later.
     #
     config.time_zone = "Nairobi"
+    # config.environment = "production"
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
